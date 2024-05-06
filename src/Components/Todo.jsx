@@ -28,6 +28,21 @@ const Todo = () => {
       localStorage.setItem("todos", JSON.stringify(todos));
     }, 100);
   }, [todos]);
+  //
+  const [sortBy, setSortBy] = useState(""); // stocker la méthode de tri
+
+  const sortTodos = (method) => {
+    let sortedTodos = [...todos];
+    if (method === "alphabetical") {
+      sortedTodos.sort((a, b) => a.text.localeCompare(b.text)); // tri par ordre alphabétique
+    } else if (method === "priority") {
+      sortedTodos.sort((a, b) => a.no - b.no); // tri par priorité
+    }
+    setTodos(sortedTodos);
+    setSortBy(method);
+  };
+
+  //
 
   return (
     <div className="todo">
@@ -48,6 +63,13 @@ const Todo = () => {
           ADD
         </div>
       </div>
+      <div className="todo-sort">
+        <button onClick={() => sortTodos("alphabetical")}>
+          Sort alphabetically
+        </button>
+        <button onClick={() => sortTodos("priority")}>Sort by priority</button>
+      </div>
+
       <div className="todo-list">
         {todos.map((item, index) => {
           return (

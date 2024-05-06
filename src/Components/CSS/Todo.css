@@ -48,3 +48,29 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+.todo-sort {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.todo-sort button {
+  border-radius: 30px;
+  background: #ff67ff;
+  width: 140px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: #01060d;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.todo-sort button:hover {
+  background-color: #e64dff;
+}
